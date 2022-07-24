@@ -33,6 +33,6 @@ Relational Algebra Operator Implementation\
   Tree Protocols
 ## Structured Query Language
 
-This project is using the following structured query language
+These exercises are using the following structured query language
 
 - Oracle SQL
