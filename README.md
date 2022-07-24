@@ -1,4 +1,3 @@
-
 # Database-Management-Systems
 
 DATABASE MANAGEMENT SYSTEMS. https://www.csd.uoc.gr/~hy460/2021-2022-fall/#page-top
@@ -32,3 +31,8 @@ Relational Algebra Operator Implementation\
   Execution Plans and Serializability\
   Locking\
   Tree Protocols
+## Structured Query Language
+
+This project is using the following structured query language
+
+- Oracle SQL
