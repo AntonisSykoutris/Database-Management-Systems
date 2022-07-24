@@ -1,0 +1,37 @@
+CREATE CLUSTER c1(movieID NUMBER(7,0)) HASHKEYS 1000;
+
+CREATE TABLE MOVIE (
+	movieID numeric(7) not null,
+	movieTitle char(110) not null,                                                                    
+	color char(45),
+	language char(20),
+	year numeric(4)
+)
+CLUSTER c1(movieID);
+
+ALTER SESSION SET OPTIMIZER_MODE = ALL_ROWS;
+
+
+EXPLAIN PLAN
+SET STATEMENT_ID = '1A1' FOR
+SELECT movieTitle FROM movie 
+WHERE year > 1990;
+
+SELECT ID||' '||PARENT_ID||' '||LPAD(' ', 2*(LEVEL-1))||OPERATION||'
+'||OPTIONS||' '||OBJECT_NAME "QUERY PLAN" FROM PLAN_TABLE WHERE
+STATEMENT_ID='1A1' START WITH ID = 0 CONNECT BY PRIOR
+ID=PARENT_ID;
+
+
+EXPLAIN PLAN
+SET STATEMENT_ID = '1A2' FOR
+SELECT personName 
+FROM people 
+WHERE birthYear > 1945;
+
+SELECT ID||' '||PARENT_ID||' '||LPAD(' ', 2*(LEVEL-1))||OPERATION||'
+'||OPTIONS||' '||OBJECT_NAME "QUERY PLAN" FROM PLAN_TABLE WHERE
+STATEMENT_ID='1A2' START WITH ID = 0 CONNECT BY PRIOR
+ID=PARENT_ID;
+
+

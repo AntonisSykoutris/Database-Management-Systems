@@ -1,0 +1,16 @@
+create or replace NONEDITIONABLE FUNCTION ROW_NO  
+RETURN varchar2 AS 
+
+e_row_lock EXCEPTION;
+BEGIN
+
+LOCK TABLE accounts IN SHARE ROW EXCLUSIVE MODE NOWAIT;
+RETURN 'true';
+
+
+EXCEPTION
+WHEN e_row_lock THEN   
+    DBMS_OUTPUT.PUT_LINE('ERROR: It is locked');   
+RETURN 'false';
+
+END ROW_NO;
